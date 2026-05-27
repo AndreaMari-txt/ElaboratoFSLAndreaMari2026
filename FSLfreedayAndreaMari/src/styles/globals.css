@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --surface:        #111110;
+    --surface-raised: #191917;
+    --surface-overlay:#212120;
+    --surface-border: #2a2a28;
+    --accent:         #e8e8e0;
+    --accent-dim:     #b8b8b0;
+    --text-primary:   #efefeb;
+    --text-secondary: #808070;
+    --text-muted:     #484840;
+  }
+
+  html { scroll-behavior: smooth; background-color: var(--surface); }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--surface);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * { box-sizing: border-box; }
+
+  ::selection { background-color: #e8e8e0; color: #111110; }
+
+  ::-webkit-scrollbar       { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--surface); }
+  ::-webkit-scrollbar-thumb { background: var(--surface-border); border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #555548; }
+}
+
+@layer components {
+  .section-label {
+    @apply font-mono text-xs tracking-widest uppercase;
+    color: #888878;
+  }
+
+  .section-title {
+    @apply font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+  }
+
+  .card-surface {
+    background: linear-gradient(145deg, #1e1e1c, #161614);
+    @apply border border-surface-border rounded-2xl;
+  }
+
+  .tag {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono;
+    background: #1e1e1c;
+    border: 1px solid #2a2a28;
+    color: #888878;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-display font-semibold text-sm transition-all duration-200;
+    background: #e8e8e0;
+    color: #111110;
+  }
+  .btn-accent:hover { background: #f5f5f0; }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-display font-medium text-sm transition-all duration-200;
+    border: 1px solid #2a2a28;
+    color: #c0c0b8;
+  }
+  .btn-ghost:hover { border-color: #555548; color: #e8e8e0; }
+
+  /* Glow sottile neutro */
+  .glow-card {
+    box-shadow: 0 0 0 1px #2a2a28, 0 8px 32px rgba(0,0,0,0.4);
+  }
+
+  /* Testo sfumato bianco → grigio */
+  .text-gradient {
+    background: linear-gradient(135deg, #efefeb 30%, #484840 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-accent {
+    background: linear-gradient(135deg, #d0d0c8 0%, #666658 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .divider { @apply border-t border-surface-border; }
+
+  /* Griglia puntini discreti */
+  .grid-dots {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* Highlight box laterale */
+  .highlight-box {
+    border-left: 2px solid #3a3a38;
+    background: linear-gradient(90deg, #1e1e1c, #161614);
+    @apply rounded-r-xl px-5 py-4;
+  }
+}
+
+/* Progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #e8e8e0, #666658);
+  z-index: 9999;
+  transition: width 0.1s ease;
+  transform-origin: left;
+}
